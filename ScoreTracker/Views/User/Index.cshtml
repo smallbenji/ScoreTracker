@@ -1,0 +1,29 @@
+﻿@model List<ScoreTracker.Models.GameModels.User>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Name
+            </th>
+        </tr>
+    </thead>
+    @foreach (var line in Model)
+    {
+        <tr>
+            <td>
+                @line.Id
+            </td>
+            <td>
+                @line.Name
+            </td>
+        </tr>
+    }
+</table>
+
+<div class="btn-group">
+    <a asp-controller="User" asp-action="Create" class="btn btn-primary">Create User</a>
+</div>

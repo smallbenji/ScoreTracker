@@ -1,0 +1,21 @@
+﻿@model List<ScoreTracker.Models.GameModels.Team>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var team in Model){
+            <tr>
+                <td>
+                    @team.Id
+                </td>
+                <td>
+                    @team.Name
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

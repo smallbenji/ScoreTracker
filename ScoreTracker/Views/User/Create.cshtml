@@ -1,0 +1,8 @@
+﻿@model ScoreTracker.Models.GameModels.User;
+
+<form method="post" asp-action="Create" asp-controller="User">
+    <label for="Name">Name</label>
+    <input asp-for="Name" name="Name" class="form-control" type="text" />
+
+    <input type="submit" class="btn btn-success" />
+</form>
