@@ -2,7 +2,13 @@
 
 namespace ScoreTracker.Components
 {
-    public class TeamManager
+    public interface ITeamManager
+    {
+        void AddTeam(string name, List<User> Users);
+        void RemoveTeam(int id);
+    }
+
+    public class TeamManager : ITeamManager
     {
         private readonly DataContext context;
 

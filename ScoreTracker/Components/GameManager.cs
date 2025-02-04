@@ -2,7 +2,13 @@
 
 namespace ScoreTracker.Components
 {
-    public class GameManager
+    interface IGameManager
+    {
+        void CreateGame(List<Team> Teams);
+        void AddPoint(User user, int Point);
+    }
+
+    public class GameManager : IGameManager
     {
         private readonly DataContext context;
 

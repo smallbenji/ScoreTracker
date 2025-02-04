@@ -3,7 +3,13 @@
 
 namespace ScoreTracker.Components
 {
-    public class UserManager
+    public interface IUserManager
+    {
+        void AddUser(User user);
+        string GetInitialOfUser(int id);
+    }
+
+    public class UserManager : IUserManager
     {
         private readonly DataContext context;
 
