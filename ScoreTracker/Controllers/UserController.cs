@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ScoreTracker.Components;
 using ScoreTracker.Models;
 
 namespace ScoreTracker.Controllers
@@ -6,10 +7,12 @@ namespace ScoreTracker.Controllers
     public class UserController : Controller
     {
         private readonly DataContext context;
+        private readonly IUserManager userManager;
 
-        public UserController(DataContext context)
+        public UserController(DataContext context, IUserManager userManager)
         {
             this.context = context;
+            this.userManager = userManager;
         }
 
         public IActionResult Index()
@@ -27,8 +30,7 @@ namespace ScoreTracker.Controllers
         [HttpPost]
         public IActionResult Create(User user)
         {
-            context.Users.Add(user);
-            context.SaveChanges();
+            userManager.AddUser(user);
 
             return RedirectToAction("Index");
         }
