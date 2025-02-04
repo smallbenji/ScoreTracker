@@ -6,18 +6,18 @@ namespace ScoreTracker.Controllers
 {
     public class UserController : Controller
     {
-        private readonly DataContext context;
         private readonly IUserManager userManager;
 
-        public UserController(DataContext context, IUserManager userManager)
+        public UserController (
+            IUserManager userManager
+        )
         {
-            this.context = context;
             this.userManager = userManager;
         }
 
         public IActionResult Index()
         {
-            var vm = context.Users.ToList();
+            var vm = userManager.GetAll();
 
             return View(vm);
         }

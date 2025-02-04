@@ -5,11 +5,11 @@ namespace ScoreTracker.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly DataContext context;
+        public HomeController (
 
-        public HomeController(DataContext context)
+        )
         {
-            this.context = context;
+
         }
 
         public IActionResult Index()
