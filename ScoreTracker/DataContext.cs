@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using static ScoreTracker.Models.GameModels;
+using ScoreTracker.Models;
 
 namespace ScoreTracker
 {

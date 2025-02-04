@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using static ScoreTracker.Models.GameModels;
+using ScoreTracker.Models;
 
 namespace ScoreTracker.Controllers
 {
