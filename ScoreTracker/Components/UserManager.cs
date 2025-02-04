@@ -5,8 +5,12 @@ namespace ScoreTracker.Components
 {
     public interface IUserManager
     {
+        List<User> GetAll();
+        User GetUser(int id);
         void AddUser(User user);
         string GetInitialOfUser(int id);
+        void RemoveUser(int id);
+        void UpdateUser(User user);
     }
 
     public class UserManager : IUserManager
@@ -18,13 +22,19 @@ namespace ScoreTracker.Components
             this.context = context;
         }
 
-        public void AddUser(string name)
+        public List<User> GetAll()
         {
-            var User = new User();
+            return context.Users.ToList();
+        }
 
-            User.Name = name;
+        public User GetUser(int id)
+        {
+            return context.Users.FirstOrDefault(x => x.Id.Equals(id));
+        }
 
-            context.Users.Add(User);
+        public void AddUser(User user)
+        {
+            context.Users.Add(user);
 
             context.SaveChanges();
         }
@@ -34,6 +44,23 @@ namespace ScoreTracker.Components
             var user = context.Users.FirstOrDefault(x => x.Id == id);
 
             return user.Name.Split("", StringSplitOptions.RemoveEmptyEntries)[0];
+        }
+
+        public void RemoveUser(int id)
+        {
+            // Find user
+            var user = context.Users.FirstOrDefault(x => x.Id.Equals(id));
+
+            context.Users.Remove(user);
+
+            context.SaveChanges();
+        }
+
+        public void UpdateUser(User user)
+        {
+            context.Users.Update(user);
+
+            context.SaveChanges();
         }
     }
 }
