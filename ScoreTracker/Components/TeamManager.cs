@@ -6,6 +6,8 @@ namespace ScoreTracker.Components
     {
         void AddTeam(string name, List<User> Users);
         void RemoveTeam(int id);
+        List<Team> GetAll();
+        Team GetTeam(int id);
     }
 
     public class TeamManager : ITeamManager
@@ -41,6 +43,16 @@ namespace ScoreTracker.Components
             }
 
             throw new Exception("Team not found");
+        }
+
+        public List<Team> GetAll()
+        {
+            return context.Teams.ToList();
+        }
+
+        public Team GetTeam(int id)
+        {
+            return context.Teams.FirstOrDefault(x => x.Id.Equals(id));
         }
     }
 }
