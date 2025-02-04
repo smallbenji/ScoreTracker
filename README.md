@@ -5,9 +5,9 @@ A useful tracker for creating a leaderboard for a year long baby foot game.
 This tracker is made as a fun side project for work, where we wanted an application which could track our scores, and give stats for each player.
 
 ## Roadmap
-[] Create users
-[] Create teams
-[] Authentication
+[ ] Create users
+[ ] Create teams
+[ ] Authentication
 
 ## Want to contribute
 Requirements for project to run locally:
