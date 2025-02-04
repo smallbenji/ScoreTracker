@@ -14,16 +14,7 @@ namespace ScoreTracker.Controllers
 
         public IActionResult Index()
         {
-            var vm = new HomeViewModel();
-
-            vm.Teams = context.Teams.ToList();
-
-            return View(vm);
+            return View();
         }
-    }
-
-    public class HomeViewModel
-    {
-        public List<Team> Teams { get; set; }
     }
 }
