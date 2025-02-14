@@ -1,0 +1,13 @@
+﻿@model ScoreTracker.Models.User;
+
+<div class="card mx-auto mt-lg-5" style="width: 32rem;">
+    <div class="card-header">
+        Edit User
+    </div>
+    <form method="post" asp-action="Edit" asp-controller="User" class="p-4">
+        <label for="Name">Name</label>
+        <input asp-for="Name" name="Name" class="form-control" type="text" required />
+
+        <input type="submit" class="btn btn-primary mt-4 text-center" value="Edit" />
+    </form>
+</div>

@@ -34,6 +34,22 @@ namespace ScoreTracker.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public IActionResult Edit(int id)
+        {
+            var vm = userManager.GetUser(id);
+
+            return View(vm);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(User user)
+        {
+            userManager.UpdateUser(user);
+
+            return RedirectToAction("Index");
+        }
+
         public IActionResult Delete(int id)
         {
             userManager.RemoveUser(id);

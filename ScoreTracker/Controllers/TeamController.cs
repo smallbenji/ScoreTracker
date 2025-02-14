@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using ScoreTracker.Components;
+using ScoreTracker.Models;
 
 namespace ScoreTracker.Controllers
 {
@@ -70,6 +72,10 @@ namespace ScoreTracker.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public IActionResult Edit(int id)
+        {
+            var vm = teamManager.GetTeam(id);
+
             return View(vm);
         }
         public IActionResult Delete(int id)
@@ -78,5 +84,11 @@ namespace ScoreTracker.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+    }
+
+    public class TeamCreate
+    {
+        public string Name { get; set; }
+        public List<string> Users { get; set; }
     }
 }
