@@ -1,4 +1,5 @@
-﻿using ScoreTracker.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using ScoreTracker.Models;
 
 namespace ScoreTracker.Components
 {
@@ -49,7 +50,7 @@ namespace ScoreTracker.Components
 
         public List<Team> GetAll()
         {
-            return context.Teams.ToList();
+            return context.Teams.Include(o => o.Users).ToList();
         }
 
         public Team GetTeam(int id)
