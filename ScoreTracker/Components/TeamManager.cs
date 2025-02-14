@@ -23,6 +23,8 @@ namespace ScoreTracker.Components
         {
             var team = new Team();
 
+            team.Name = name;
+
             team.Users = Users;
 
             context.Teams.Add(team);
