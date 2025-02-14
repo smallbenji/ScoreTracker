@@ -1,8 +1,13 @@
 ﻿@model ScoreTracker.Models.User;
 
-<form method="post" asp-action="Create" asp-controller="User">
-    <label for="Name">Name</label>
-    <input asp-for="Name" name="Name" class="form-control" type="text" />
+<div class="card mx-auto mt-lg-5" style="width: 32rem;">
+    <div class="card-header">
+        Create User
+    </div>
+    <form method="post" asp-action="Create" asp-controller="User" class="p-4">
+        <label for="Name">Name</label>
+        <input asp-for="Name" name="Name" class="form-control" type="text" required/>
 
-    <input type="submit" class="btn btn-success" />
-</form>
+        <input type="submit" class="btn btn-primary mt-4 text-center" value="Create" />
+    </form>
+</div>
