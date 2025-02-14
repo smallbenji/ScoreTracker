@@ -27,6 +27,49 @@ namespace ScoreTracker.Controllers
         {
             var vm = userManager.GetAll();
 
+            var users = new List<SelectListItem>();
+
+            users.AddRange(vm.Select(o => new SelectListItem()
+            {
+                Text = o.Name,
+                Value = o.Id.ToString(),
+            }));
+
+            ViewBag.Users = users;
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(TeamCreate team)
+        {
+            var usersSelected = new List<User>();
+
+            foreach (var item in team.Users )
+            {
+                if (int.TryParse(item, out var i))
+                {
+                    try
+                    {
+                        usersSelected.Add(userManager.GetUser(i));
+                    }
+                    catch
+                    {
+                        return StatusCode(StatusCodes.Status400BadRequest, "Error happened while trying to find user");
+                    }
+                }
+                else
+                {
+                    return StatusCode(StatusCodes.Status400BadRequest, "Could not parse integer");
+                }
+
+            }
+
+            teamManager.AddTeam(team.Name, usersSelected);
+
+            return RedirectToAction(nameof(Index));
+        }
+
             return View(vm);
         }
         public IActionResult Delete(int id)

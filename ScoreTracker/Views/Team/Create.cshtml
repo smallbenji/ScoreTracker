@@ -1,2 +1,16 @@
-﻿@model List<ScoreTracker.Models.User>
+﻿@using ScoreTracker.Controllers
+@model TeamCreate
 
+<div class="card mx-auto mt-lg-5" style="width: 32rem;">
+    <div class="card-header">
+        Create team
+    </div>
+    <form class="form p-4" method="post">
+        <label for="Name">Name</label>
+        <input asp-for="Name" type="text" class="form-control" required />
+        <label for="Users">Users</label>
+        <select asp-for="Users" asp-items="@Html.GetSelections("Users")" class="form-select" multiple required></select>
+
+        <input type="submit" class="btn btn-primary mt-4 text-center" value="Create"/>
+    </form>
+</div>
