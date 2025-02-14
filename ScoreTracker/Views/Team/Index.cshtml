@@ -1,9 +1,17 @@
 ﻿@model List<ScoreTracker.Models.Team>
-<table class="table">
+<table data-toggle="table">
     <thead>
+        <tr class="tr-class-1">
+            <th colspan="3"><h2>Teams</h2></th>
+            <th data-width="100">
+                <a asp-action="create" class="btn btn-primary">Create Team</a>
+            </th>
+        </tr>
         <tr>
             <th>Id</th>
             <th>Name</th>
+            <th>Members</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -14,6 +22,17 @@
                 </td>
                 <td>
                     @team.Name
+                </td>
+                <td>
+                    @foreach(var member in team.Users){
+                        <p class="badge text-bg-secondary">@member.Name </p>
+                    }
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <a asp-action="edit" asp-route-id="@team.Id" class="btn btn-primary disabled">Edit</a>
+                        <a asp-action="delete" asp-route-id="@team.Id" class="btn btn-danger">Delete</a>
+                    </div>
                 </td>
             </tr>
         }
