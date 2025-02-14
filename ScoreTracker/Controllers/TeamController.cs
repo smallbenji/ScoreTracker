@@ -29,5 +29,11 @@ namespace ScoreTracker.Controllers
 
             return View(vm);
         }
+        public IActionResult Delete(int id)
+        {
+            teamManager.RemoveTeam(id);
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
