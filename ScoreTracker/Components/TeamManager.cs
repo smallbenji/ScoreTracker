@@ -7,6 +7,7 @@ namespace ScoreTracker.Components
     {
         void AddTeam(string name, List<User> Users);
         void RemoveTeam(int id);
+        void EditTeam(Team team);
         List<Team> GetAll();
         Team GetTeam(int id);
     }
@@ -55,7 +56,14 @@ namespace ScoreTracker.Components
 
         public Team GetTeam(int id)
         {
-            return context.Teams.FirstOrDefault(x => x.Id.Equals(id));
+            return context.Teams.Include(x => x.Users).FirstOrDefault(x => x.Id.Equals(id));
+        }
+
+        public void EditTeam(Team team)
+        {
+            context.Teams.Update(team);
+
+            context.SaveChanges();
         }
     }
 }
